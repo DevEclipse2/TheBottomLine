@@ -8,7 +8,6 @@ func _process(delta: float) -> void:
 	# -1.0 if Look_down is pressed
 	#  0.0 if neither (or both) are pressed
 	cooldown -= delta
-	print(cooldown)
 	var look_input: float = Input.get_axis("Look_down", "Look_up")
 	
 	if cooldown <= 0.0:

@@ -39,5 +39,12 @@ script = ExtResource("1_b3w7a")
 [node name="Label" type="Label" parent="Node2D" unique_id=896257241]
 offset_right = 581.3334
 offset_bottom = 154.66667
-text = "Mr Hilbert's infinitely interesting hotel"
+text = "Mr Hilbert's infinitely interesting hotel
+                (that's kinda bankrupt)
+
+
+
+so you gotta fix it 
+
+ bounce back type beat"
 label_settings = SubResource("LabelSettings_g4v7s")
