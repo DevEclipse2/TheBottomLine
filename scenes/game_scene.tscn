@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://edkj7xsrria2" path="res://texture/game/Untitled_Artwork-11.png" id="4_rvs2r"]
 [ext_resource type="Texture2D" uid="uid://d2ghpao8ux50x" path="res://texture/game/Untitled_Artwork-6.png" id="5_tqxxy"]
 [ext_resource type="Texture2D" uid="uid://c616fe1i3l4ts" path="res://texture/game/Untitled_Artwork-7.png" id="6_5ay1a"]
+[ext_resource type="Script" uid="uid://cupxp1nekex8n" path="res://scenes/universalitem.gd" id="7_103ce"]
 [ext_resource type="Texture2D" uid="uid://ba5llfg1ggl8i" path="res://texture/game/Untitled_Artwork-9.png" id="7_ldkr4"]
 [ext_resource type="Texture2D" uid="uid://dthfi6wkvei1q" path="res://texture/game/notebook.png" id="7_ro0ie"]
 [ext_resource type="Texture2D" uid="uid://c4gw5q38blyt1" path="res://texture/game/Untitled_Artwork-10.png" id="8_liy57"]
@@ -21,6 +22,10 @@
 [ext_resource type="Texture2D" uid="uid://7ikbycw8mr8o" path="res://texture/game/IMG_8821.PNG" id="16_ro0ie"]
 [ext_resource type="Texture2D" uid="uid://vtqtuw3l3d22" path="res://texture/game/IMG_8822.PNG" id="17_103ce"]
 [ext_resource type="Texture2D" uid="uid://y8obf4rjhw58" path="res://texture/game/Arrow.png" id="21_ro0ie"]
+[ext_resource type="Script" uid="uid://cx5hjnsobl6o6" path="res://scenes/grapher.gd" id="22_pb36m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yf5fn"]
+font_size = 55
 
 [sub_resource type="Animation" id="Animation_mw25s"]
 length = 0.001
@@ -120,142 +125,261 @@ font_size = 24
 
 [node name="GameScene" type="Node2D" unique_id=1931508302]
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1631642216]
+[node name="feedback" type="Node2D" parent="." unique_id=1631642216]
 script = ExtResource("1_77hjl")
+metadata/callid = 0
+metadata/object = 0
 
-[node name="workspace" type="Node2D" parent="Node2D" unique_id=1828741507]
+[node name="hand full alert" type="Label" parent="feedback" unique_id=868917202]
+z_index = 10
+offset_left = 868.0
+offset_top = 791.0
+offset_right = 1334.0
+offset_bottom = 898.0
+text = "hands full!"
+label_settings = SubResource("LabelSettings_yf5fn")
+
+[node name="object name" type="Label" parent="feedback" unique_id=1813730323]
+z_index = 32
+offset_left = 7.0
+offset_top = -11.0
+offset_right = 473.0
+offset_bottom = 96.0
+text = "object name"
+label_settings = SubResource("LabelSettings_yf5fn")
+
+[node name="workspace" type="Node2D" parent="feedback" unique_id=1828741507]
 position = Vector2(577.01, 990.815)
 scale = Vector2(0.489, 0.489)
 script = ExtResource("1_tcjrq")
 
-[node name="AnimationTree" type="AnimationTree" parent="Node2D/workspace" unique_id=233145115]
+[node name="AnimationTree" type="AnimationTree" parent="feedback/workspace" unique_id=233145115]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/workspace" unique_id=1118728501]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="feedback/workspace" unique_id=1118728501]
 libraries/ = SubResource("AnimationLibrary_rvs2r")
 
-[node name="main" type="Node2D" parent="Node2D/workspace" unique_id=783284719]
+[node name="main" type="Node2D" parent="feedback/workspace" unique_id=783284719]
 
-[node name="bkg" type="Sprite2D" parent="Node2D/workspace/main" unique_id=1885183458]
+[node name="the object shadow" type="Button" parent="feedback/workspace/main" unique_id=1387086325]
+z_index = 6
+offset_left = 1425.3374
+offset_top = 679.3148
+offset_right = 1433.3374
+offset_bottom = 687.3148
+scale = Vector2(75.41754, 22.74003)
+
+[node name="bkg" type="Sprite2D" parent="feedback/workspace/main" unique_id=1885183458]
 texture = ExtResource("1_w5aja")
 
-[node name="desk top" type="Sprite2D" parent="Node2D/workspace/main" unique_id=459842786]
+[node name="desk top" type="Sprite2D" parent="feedback/workspace/main" unique_id=459842786]
 texture = ExtResource("7_ldkr4")
 
-[node name="desk" type="Sprite2D" parent="Node2D/workspace/main" unique_id=966231585]
+[node name="desk" type="Sprite2D" parent="feedback/workspace/main" unique_id=966231585]
 texture = ExtResource("2_mw25s")
 
-[node name="widgets" type="Sprite2D" parent="Node2D/workspace/main" unique_id=1685644593]
+[node name="widgets" type="Sprite2D" parent="feedback/workspace/main" unique_id=1685644593]
 texture = SubResource("PlaceholderTexture2D_rw4oa")
 
-[node name="ashtray" type="Sprite2D" parent="Node2D/workspace/main/widgets" unique_id=1551731934]
+[node name="ashtray" type="Sprite2D" parent="feedback/workspace/main/widgets" unique_id=1551731934]
 z_index = 1
 texture = ExtResource("4_rvs2r")
 
-[node name="notebook" type="Sprite2D" parent="Node2D/workspace/main/widgets" unique_id=1578993805]
+[node name="Btn" type="Button" parent="feedback/workspace/main/widgets/ashtray" unique_id=1601840652]
+z_index = -4
+offset_left = -1067.5052
+offset_top = -600.8487
+offset_right = -1059.5052
+offset_bottom = -592.8487
+scale = Vector2(57.333237, 26.519773)
+script = ExtResource("7_103ce")
+metadata/id = 1
+
+[node name="notebook" type="Sprite2D" parent="feedback/workspace/main/widgets" unique_id=1578993805]
 z_index = 1
-position = Vector2(-137.03479, -187.76076)
+position = Vector2(-437.6483, -52.791412)
+scale = Vector2(0.685, 0.685)
 texture = ExtResource("7_ro0ie")
 
-[node name="calendar" type="Sprite2D" parent="Node2D/workspace/main/widgets" unique_id=1434278125]
+[node name="Btn" type="Button" parent="feedback/workspace/main/widgets/notebook" unique_id=172914773]
+z_index = -4
+offset_left = -122.6994
+offset_top = -220.85896
+offset_right = -114.6994
+offset_bottom = -212.85896
+scale = Vector2(53.161472, 69.703995)
+script = ExtResource("7_103ce")
+metadata/id = 2
+
+[node name="calendar" type="Sprite2D" parent="feedback/workspace/main/widgets" unique_id=1434278125]
 texture = ExtResource("5_tqxxy")
 
-[node name="keys" type="Sprite2D" parent="Node2D/workspace/main/widgets" unique_id=1326906341]
+[node name="keys" type="Sprite2D" parent="feedback/workspace/main/widgets" unique_id=1326906341]
 texture = ExtResource("6_5ay1a")
 
-[node name="Btn" type="Button" parent="Node2D/workspace/main/widgets/keys" unique_id=1393638702]
+[node name="Btn" type="Button" parent="feedback/workspace/main/widgets/keys" unique_id=1393638702]
 z_index = -1
 offset_left = 130.8589
 offset_top = -373.85477
 offset_right = 138.8589
 offset_bottom = -365.85477
 scale = Vector2(52.017937, 55.26723)
+script = ExtResource("7_103ce")
+metadata/id = 3
 
-[node name="bottle" type="Sprite2D" parent="Node2D/workspace/main/widgets" unique_id=2028522872]
+[node name="bottle" type="Sprite2D" parent="feedback/workspace/main/widgets" unique_id=2028522872]
 texture = ExtResource("10_6aqbo")
 
-[node name="Btn" type="Button" parent="Node2D/workspace/main/widgets/bottle" unique_id=391595456]
+[node name="Btn" type="Button" parent="feedback/workspace/main/widgets/bottle" unique_id=391595456]
 z_index = -1
 offset_left = 869.10016
 offset_top = -347.27002
 offset_right = 877.10016
 offset_bottom = -339.27002
 scale = Vector2(36.29709, 112.93144)
+script = ExtResource("7_103ce")
+metadata/id = 4
 
-[node name="clock" type="Sprite2D" parent="Node2D/workspace/main/widgets" unique_id=1248092996]
+[node name="clock" type="Sprite2D" parent="feedback/workspace/main/widgets" unique_id=1248092996]
 texture = ExtResource("8_liy57")
 
-[node name="transcoder" type="Sprite2D" parent="Node2D/workspace/main/widgets" unique_id=1714496105]
+[node name="Btn" type="Button" parent="feedback/workspace/main/widgets/clock" unique_id=1237415051]
+z_index = -1
+offset_left = -721.90173
+offset_top = -1116.1862
+offset_right = -713.90173
+offset_bottom = -1108.1862
+scale = Vector2(35.61146, 71.08398)
+script = ExtResource("7_103ce")
+metadata/id = 5
+
+[node name="transcoder" type="Sprite2D" parent="feedback/workspace/main/widgets" unique_id=1714496105]
 position = Vector2(-789.38654, -167.31084)
 scale = Vector2(1.39, 1.39)
 texture = ExtResource("12_ro0ie")
 
-[node name="Btn" type="Button" parent="Node2D/workspace/main/widgets/transcoder" unique_id=1252215913]
+[node name="Btn" type="Button" parent="feedback/workspace/main/widgets/transcoder" unique_id=1252215913]
 z_index = -1
-offset_left = -176.54602
-offset_top = -178.01712
-offset_right = -168.54602
-offset_bottom = -170.01712
+offset_left = -176.54588
+offset_top = -173.60347
+offset_right = -168.54588
+offset_bottom = -165.60347
 scale = Vector2(39.41303, 53.97459)
+script = ExtResource("7_103ce")
+metadata/id = 6
 
-[node name="drawer" type="Sprite2D" parent="Node2D/workspace/main" unique_id=1905525643]
+[node name="drawer" type="Sprite2D" parent="feedback/workspace/main" unique_id=1905525643]
 position = Vector2(0, -0.00012456154)
 texture = ExtResource("9_mwyo0")
 
-[node name="handspace" type="Node2D" parent="Node2D" unique_id=1106647582]
+[node name="Btn" type="Button" parent="feedback/workspace/main/drawer" unique_id=1523902482]
+z_index = -1
+offset_left = -1116.585
+offset_top = 1121.0328
+offset_right = -1108.585
+offset_bottom = 1129.0328
+scale = Vector2(278.69116, 100.95846)
+
+[node name="handspace" type="Node2D" parent="feedback" unique_id=1106647582]
 position = Vector2(1066.0001, 859.99994)
 rotation = -0.029670598
 scale = Vector2(1.295, 1.295)
-skew = -0.19722223
 script = ExtResource("12_s76x2")
 metadata/state = 0
+metadata/object = 0
 
-[node name="hand" type="Node2D" parent="Node2D/handspace" unique_id=1172673414]
+[node name="hand" type="Node2D" parent="feedback/handspace" unique_id=1172673414]
 position = Vector2(2.1458626, -107.20133)
 
-[node name="point" type="Sprite2D" parent="Node2D/handspace/hand" unique_id=2037852798]
+[node name="point" type="Sprite2D" parent="feedback/handspace/hand" unique_id=2037852798]
 visible = false
 position = Vector2(-37, -224)
 texture = ExtResource("12_mwyo0")
 
-[node name="fingertip" type="Node2D" parent="Node2D/handspace/hand/point" unique_id=1756427612]
+[node name="fingertip" type="Node2D" parent="feedback/handspace/hand/point" unique_id=1756427612]
 position = Vector2(70.00842, -48.134464)
 
-[node name="fingerroot" type="Node2D" parent="Node2D/handspace/hand/point" unique_id=1487979829]
+[node name="fingerroot" type="Node2D" parent="feedback/handspace/hand/point" unique_id=1487979829]
 position = Vector2(111.72446, 82.31523)
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="grip" type="Sprite2D" parent="Node2D/handspace/hand" unique_id=553318208]
+[node name="grip" type="Sprite2D" parent="feedback/handspace/hand" unique_id=553318208]
 position = Vector2(-37, -224)
 texture = ExtResource("13_s76x2")
 
-[node name="thumb" type="Sprite2D" parent="Node2D/handspace/hand/grip" unique_id=1956866491]
+[node name="thumb" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=1956866491]
+z_index = 2
 texture = ExtResource("14_77hjl")
 
-[node name="fingertip" type="Node2D" parent="Node2D/handspace/hand/grip" unique_id=1489485252]
+[node name="fingertip" type="Node2D" parent="feedback/handspace/hand/grip" unique_id=1489485252]
 position = Vector2(77.03042, -31.277903)
 
-[node name="fingerroot" type="Node2D" parent="Node2D/handspace/hand/grip" unique_id=650424003]
+[node name="fingerroot" type="Node2D" parent="feedback/handspace/hand/grip" unique_id=650424003]
 position = Vector2(154.06079, -62.555817)
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="beckon" type="Sprite2D" parent="Node2D/handspace/hand" unique_id=2040563930]
+[node name="ashtray" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=429733299]
+visible = false
+position = Vector2(461.4394, 274.33347)
+scale = Vector2(0.465, 0.465)
+texture = ExtResource("4_rvs2r")
+
+[node name="notebook" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=878174009]
+z_index = 1
+position = Vector2(88.94389, -59.64399)
+rotation = 1.2915436
+scale = Vector2(0.455, 0.455)
+skew = -0.17453292
+texture = ExtResource("7_ro0ie")
+
+[node name="keys" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=171060695]
+visible = false
+position = Vector2(-69.81451, -46.587402)
+rotation = 1.1780972
+scale = Vector2(0.52, 0.52)
+skew = -0.3996804
+texture = ExtResource("6_5ay1a")
+
+[node name="bottle" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=2085584585]
+visible = false
+position = Vector2(-80.82896, -456.36096)
+rotation = 1.0419616
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("10_6aqbo")
+
+[node name="clock" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=786341527]
+visible = false
+position = Vector2(-54.34143, 499.28558)
+rotation = 0.8185594
+scale = Vector2(0.455, 0.455)
+skew = 0.034906585
+texture = ExtResource("8_liy57")
+
+[node name="transcoder" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=2129425896]
+visible = false
+position = Vector2(113.8884, -41.135223)
+rotation = 1.1466813
+scale = Vector2(1.195, 1.195)
+texture = ExtResource("12_ro0ie")
+
+[node name="beckon" type="Sprite2D" parent="feedback/handspace/hand" unique_id=2040563930]
 visible = false
 position = Vector2(-37, -224)
 texture = ExtResource("15_6aqbo")
 
-[node name="idle" type="Sprite2D" parent="Node2D/handspace/hand" unique_id=1340172764]
+[node name="idle" type="Sprite2D" parent="feedback/handspace/hand" unique_id=1340172764]
 visible = false
 position = Vector2(-37, -224)
 texture = ExtResource("16_ro0ie")
 
-[node name="sleeve" type="Sprite2D" parent="Node2D/handspace" unique_id=1267110461]
+[node name="sleeve" type="Sprite2D" parent="feedback/handspace" unique_id=1267110461]
 position = Vector2(-88.909, -386.526)
 rotation = -0.13150577
 scale = Vector2(1, 1.18)
+skew = -0.05235988
 texture = ExtResource("17_103ce")
 
 [node name="graph" type="Node2D" parent="." unique_id=1295546014]
-visible = false
+script = ExtResource("22_pb36m")
 
 [node name="Sprite2D" type="Sprite2D" parent="graph" unique_id=1110735235]
 z_index = 4
