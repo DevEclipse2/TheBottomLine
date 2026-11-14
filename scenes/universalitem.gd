@@ -7,7 +7,9 @@ func _ready() -> void:
 
 func _on_texture_button_pressed() -> void:
 	# Load your target scene using its resource path
-	print("pressed")
-	print(get_meta("id"))
-	feedback.set_meta("callid", get_meta("id"))
+	if !feedback.get_meta("handfull"):
+		print("pressed")
+		print(get_meta("id"))
+		feedback.set_meta("callid", get_meta("id"))
+	
 	

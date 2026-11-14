@@ -1,17 +1,17 @@
 extends Node2D
 
-@onready var bottleitem : Sprite2D = $workspace/main/widgets/bottle
-@onready var bottlebtn : Button = $workspace/main/widgets/bottle/Btn
-@onready var keyitem : Sprite2D = $workspace/main/widgets/keys
-@onready var keybtn : Button = $workspace/main/widgets/keys/Btn
-@onready var listitem : Sprite2D = $workspace/main/widgets/transcoder
-@onready var listbtn : Button = $workspace/main/widgets/transcoder/Btn
-@onready var clockitem : Sprite2D = $workspace/main/widgets/clock
-@onready var clockbtn : Button = $workspace/main/widgets/clock/Btn
-@onready var noteitem : Sprite2D = $workspace/main/widgets/notebook
-@onready var notebtn : Button = $workspace/main/widgets/notebook/Btn
-@onready var ashitem : Sprite2D = $workspace/main/widgets/ashtray
-@onready var ashbtn : Button = $workspace/main/widgets/ashtray/Btn
+@onready var bottleitem : Node2D = $workspace/main/widgets/bottle
+@onready var bottlebtn : Button = $workspace/main/widgets/bottle/bottle/Btn
+@onready var keyitem : Node2D = $workspace/main/widgets/keys
+@onready var keybtn : Button = $workspace/main/widgets/keys/keys/Btn
+@onready var listitem : Node2D = $workspace/main/widgets/list
+@onready var listbtn : Button = $workspace/main/widgets/list/transcoder/Btn
+@onready var clockitem : Node2D = $workspace/main/widgets/clock
+@onready var clockbtn : Button = $workspace/main/widgets/clock/clock/Btn
+@onready var noteitem : Node2D = $workspace/main/widgets/note
+@onready var notebtn : Button = $workspace/main/widgets/note/notebook/Btn
+@onready var ashitem : Node2D = $workspace/main/widgets/tray
+@onready var ashbtn : Button = $workspace/main/widgets/tray/ashtray/Btn
 
 #for drawer, use beckon state visually but keep as 3 internally
 @onready var drawer : Sprite2D = $workspace/main/drawer
@@ -19,8 +19,18 @@ extends Node2D
 
 @onready var hand : Node2D = $handspace
 
+@onready var shadow : Sprite2D = $"workspace/main/the object shadow"
+
 @onready var objectNameDisp : Label = $"object name"
 @onready var handFull : Label = $"hand full alert"
+
+@onready var DLL : Node2D = $workspace/main/deskLowLeft
+@onready var DTR : Node2D = $workspace/main/deskTopRight
+@onready var CLL : Node2D = $workspace/main/counterLowLeft
+@onready var CTR : Node2D = $workspace/main/counterTopRight
+
+
+var helditem : Node2D
 
 var pointfade = 0
 var state = 0
@@ -36,17 +46,24 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
+var projectedLocation = Vector2(0,0)
+func projectPlacePoint():
+	var mousepos: Vector2 = get_global_mouse_position()
+	var projX = clampf(mousepos.x,CLL.global_position.x + 40,CTR.global_position.x - 40)
+	var projY = 0.0
+	if mousepos.y > CLL.global_position.y: #pos is down
+		#lock to bottom
+		projY = clampf(mousepos.y,DTR.global_position.y,DLL.global_position.y)
+	else:
+		projY = clampf(mousepos.y,CTR.global_position.y,CLL.global_position.y)
+	projectedLocation = Vector2(projX,projY)
+	shadow.global_position = projectedLocation
+	pass
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#use match to hide and spawn shadow
-	match get_meta("callid"):
-		0: 
-			ashitem.visibile = true
-			bottleitem.visible = true
-			keyitem.visible = true
-			
-		1: ashitem.visibile = false
-	
 	pointfade -= delta
 	#if anything is hovered AND not gripping anything
 	if bottlebtn.is_hovered():
@@ -65,10 +82,52 @@ func _process(delta: float) -> void:
 		objectNameDisp.text = "read the mucking fanual"
 	else:
 		objectNameDisp.text = "point at any object!"
+	if state == 2:
+		projectPlacePoint()
 	if get_meta("callid") != 0:
-		state = 2
-		hand.set_meta("state",2)
-		hand.set_meta("object", get_meta("callid"))
+		#item is being held in hand!
+		if state != 2:
+			state = 2
+			hand.set_meta("state",2)
+			var id = get_meta("callid")
+			hand.set_meta("object", id)
+			set_meta("handfull",true)
+			match id:
+				0: 
+					ashitem.visible = true
+					bottleitem.visible = true
+					keyitem.visible = true
+					listitem.visible = true
+					clockitem.visible = true
+					noteitem.visible = true
+				1: 
+					helditem = ashitem
+					ashitem.visible = false
+				2: 
+					helditem = noteitem
+					noteitem.visible = false
+				3: 
+					helditem = keyitem
+					keyitem.visible = false
+				4: 
+					helditem = bottleitem
+					bottleitem.visible = false
+				5: 
+					helditem = clockitem
+					clockitem.visible = false
+				6: 
+					helditem = listitem
+					listitem.visible = false
+			#below is thing that disables the buttons from being pressed
+			bottlebtn.disabled = true
+			keybtn.disabled = true
+			listbtn.disabled = true
+			clockbtn.disabled = true
+			notebtn.disabled = true
+			ashbtn.disabled = true
+			set_meta("callid",0)
+			shadow.global_position = Vector2(1000000,0)
+		
 	if bottlebtn.is_hovered() || keybtn.is_hovered() || listbtn.is_hovered() || clockbtn.is_hovered() || drawerbtn.is_hovered() || notebtn.is_hovered() || ashbtn.is_hovered():
 		
 		if state == 0:
@@ -77,7 +136,7 @@ func _process(delta: float) -> void:
 			state = 3
 		if state == 3:
 			pointfade = 0.35
-		if drawerbtn.is_hovered():
+		if drawerbtn.is_hovered() && state == 3:
 			hand.set_meta("state",1)
 	elif pointfade <= 0:
 		if state == 3 || state == 1:
@@ -96,13 +155,38 @@ func _unhandled_input(event: InputEvent) -> void:
 		#search through all instances 
 		#hide the sprite, change the state, put the item into their hand
 		#spawn shadow to hint the dropoff location
-		handFull.text = ""
-		#beckon
-		state = 1
-		hand.set_meta("state",1)
-		pointfade = 0.64
-		get_viewport().set_input_as_handled()
+		# remember to disable the button components and re-enable them later
+		if state == 2 || get_meta("handfull"):
+			#throws the item down if previously holding any
+			print("itemdown")
+			bottlebtn.disabled = false
+			keybtn.disabled = false
+			listbtn.disabled = false
+			clockbtn.disabled = false
+			notebtn.disabled = false
+			ashbtn.disabled = false
+			#unhides the desktop sprites
+			ashitem.visible = true
+			bottleitem.visible = true
+			keyitem.visible = true
+			listitem.visible = true
+			clockitem.visible = true
+			noteitem.visible = true
+			state = 0
+			hand.set_meta("state",0)
+			set_meta("handfull",false)
+			set_meta("callid",0)
+			helditem.global_position = projectedLocation
+			helditem = null
+			shadow.global_position = Vector2(1000000,0)
+		else:
+			handFull.text = ""
+			#beckon
+			state = 1
+			hand.set_meta("state",1)
+			pointfade = 0.64
 	elif event.is_action_pressed("use"):
-		
-		get_viewport().set_input_as_handled()
+		#stuff
+		print("use")
+	get_viewport().set_input_as_handled()
 	pass
