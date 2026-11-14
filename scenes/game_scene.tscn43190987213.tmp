@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://dnm105ev8c6jx"]
+
+[ext_resource type="Script" uid="uid://bd6v26jbajsqr" path="res://script/workspaces.gd" id="1_tcjrq"]
+[ext_resource type="Texture2D" uid="uid://wkifpys3ey6r" path="res://texture/game/Untitled_Artwork-1.png" id="1_w5aja"]
+[ext_resource type="Texture2D" uid="uid://bakxgxoafe0b0" path="res://texture/game/Untitled_Artwork-2.png" id="2_mw25s"]
+[ext_resource type="Texture2D" uid="uid://cvhupr4meiuem" path="res://texture/game/Untitled_Artwork-3.png" id="3_tcjrq"]
+[ext_resource type="Texture2D" uid="uid://edkj7xsrria2" path="res://texture/game/Untitled_Artwork-11.png" id="4_rvs2r"]
+[ext_resource type="Texture2D" uid="uid://d2ghpao8ux50x" path="res://texture/game/Untitled_Artwork-6.png" id="5_tqxxy"]
+[ext_resource type="Texture2D" uid="uid://c616fe1i3l4ts" path="res://texture/game/Untitled_Artwork-7.png" id="6_5ay1a"]
+[ext_resource type="Texture2D" uid="uid://ba5llfg1ggl8i" path="res://texture/game/Untitled_Artwork-9.png" id="7_ldkr4"]
+[ext_resource type="Texture2D" uid="uid://c4gw5q38blyt1" path="res://texture/game/Untitled_Artwork-10.png" id="8_liy57"]
+[ext_resource type="Texture2D" uid="uid://5untwbc2den8" path="res://texture/game/Untitled_Artwork-4.png" id="9_mwyo0"]
+[ext_resource type="Texture2D" uid="uid://cstc3wsjx3to1" path="res://texture/game/Untitled_Artwork-5.png" id="10_s76x2"]
+[ext_resource type="Texture2D" uid="uid://sisyrcmdmp8r" path="res://texture/game/IMG_8817.PNG" id="12_mwyo0"]
+[ext_resource type="Script" uid="uid://dsdq01pshl8al" path="res://script/handfollowcursor.gd" id="12_s76x2"]
+[ext_resource type="Texture2D" uid="uid://dtibhlfs7lk1k" path="res://texture/game/IMG_8820.PNG" id="13_s76x2"]
+[ext_resource type="Texture2D" uid="uid://bhrlqjwhifnsn" path="res://texture/game/IMG_8819.PNG" id="14_77hjl"]
+[ext_resource type="Texture2D" uid="uid://dyqxlrihso23a" path="res://texture/game/IMG_8818.PNG" id="15_6aqbo"]
+[ext_resource type="Texture2D" uid="uid://7ikbycw8mr8o" path="res://texture/game/IMG_8821.PNG" id="16_ro0ie"]
+[ext_resource type="Texture2D" uid="uid://vtqtuw3l3d22" path="res://texture/game/IMG_8822.PNG" id="17_103ce"]
+
+[sub_resource type="Animation" id="Animation_mw25s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(577.01, 990.815)]
+}
+
+[sub_resource type="Animation" id="Animation_rvs2r"]
+resource_name = "main-highmid"
+length = 0.80999994
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.020000026, 0.69000006),
+"transitions": PackedFloat32Array(0.0947325, 15.999948),
+"update": 0,
+"values": [Vector2(577.01, 989.675), Vector2(577.01, 305.01)]
+}
+
+[sub_resource type="Animation" id="Animation_5ay1a"]
+resource_name = "main-lowmid"
+length = 0.80999994
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.030000027, 0.69000006),
+"transitions": PackedFloat32Array(0.0947325, 15.999948),
+"update": 0,
+"values": [Vector2(577.01, -312.52), Vector2(577.01, 305.01)]
+}
+
+[sub_resource type="Animation" id="Animation_tcjrq"]
+resource_name = "main-midhigh"
+length = 0.92
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.74999994),
+"transitions": PackedFloat32Array(0.11662917, 4.438277),
+"update": 0,
+"values": [Vector2(577.01, 305.01), Vector2(577.01, 989.675)]
+}
+
+[sub_resource type="Animation" id="Animation_tqxxy"]
+resource_name = "main-midlow"
+length = 0.92
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.010000005, 0.75999993),
+"transitions": PackedFloat32Array(0.11662917, 4.438277),
+"update": 0,
+"values": [Vector2(577.01, 305.01), Vector2(577.01, -98)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rvs2r"]
+_data = {
+&"RESET": SubResource("Animation_mw25s"),
+&"main-highmid": SubResource("Animation_rvs2r"),
+&"main-lowmid": SubResource("Animation_5ay1a"),
+&"main-midhigh": SubResource("Animation_tcjrq"),
+&"main-midlow": SubResource("Animation_tqxxy")
+}
+
+[node name="GameScene" type="Node2D" unique_id=1931508302]
+
+[node name="workspace" type="Node2D" parent="." unique_id=1828741507]
+position = Vector2(577.01, 990.815)
+scale = Vector2(0.489, 0.489)
+script = ExtResource("1_tcjrq")
+
+[node name="AnimationTree" type="AnimationTree" parent="workspace" unique_id=233145115]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="workspace" unique_id=1118728501]
+libraries/ = SubResource("AnimationLibrary_rvs2r")
+
+[node name="main" type="Node2D" parent="workspace" unique_id=783284719]
+
+[node name="bkg" type="Sprite2D" parent="workspace/main" unique_id=1885183458]
+texture = ExtResource("1_w5aja")
+
+[node name="desk" type="Sprite2D" parent="workspace/main" unique_id=966231585]
+texture = ExtResource("2_mw25s")
+
+[node name="widgets" type="Sprite2D" parent="workspace/main" unique_id=1685644593]
+texture = ExtResource("3_tcjrq")
+
+[node name="ashtray" type="Sprite2D" parent="workspace/main/widgets" unique_id=1551731934]
+z_index = 1
+texture = ExtResource("4_rvs2r")
+
+[node name="calendar" type="Sprite2D" parent="workspace/main/widgets" unique_id=1434278125]
+texture = ExtResource("5_tqxxy")
+
+[node name="keys" type="Sprite2D" parent="workspace/main/widgets" unique_id=1326906341]
+texture = ExtResource("6_5ay1a")
+
+[node name="water_bottle" type="Sprite2D" parent="workspace/main/widgets" unique_id=459842786]
+texture = ExtResource("7_ldkr4")
+
+[node name="clock" type="Sprite2D" parent="workspace/main/widgets" unique_id=1248092996]
+texture = ExtResource("8_liy57")
+
+[node name="drawer" type="Sprite2D" parent="workspace/main" unique_id=1905525643]
+position = Vector2(0, -0.00012456154)
+texture = ExtResource("9_mwyo0")
+
+[node name="transcoder" type="Sprite2D" parent="workspace/main" unique_id=1714496105]
+position = Vector2(0, -0.00024414063)
+texture = ExtResource("10_s76x2")
+
+[node name="handspace" type="Node2D" parent="." unique_id=1106647582]
+position = Vector2(1039, 860.99994)
+rotation = -0.029670598
+scale = Vector2(1.295, 1.295)
+skew = -0.1972222
+script = ExtResource("12_s76x2")
+
+[node name="hand" type="Node2D" parent="handspace" unique_id=1172673414]
+position = Vector2(2.1458626, -107.20133)
+
+[node name="point" type="Sprite2D" parent="handspace/hand" unique_id=2037852798]
+visible = false
+position = Vector2(-37, -224)
+texture = ExtResource("12_mwyo0")
+
+[node name="grip" type="Sprite2D" parent="handspace/hand" unique_id=553318208]
+visible = false
+position = Vector2(-37, -224)
+texture = ExtResource("13_s76x2")
+
+[node name="thumb" type="Sprite2D" parent="handspace/hand/grip" unique_id=1956866491]
+texture = ExtResource("14_77hjl")
+
+[node name="beckon" type="Sprite2D" parent="handspace/hand" unique_id=2040563930]
+visible = false
+position = Vector2(-37, -224)
+texture = ExtResource("15_6aqbo")
+
+[node name="idle" type="Sprite2D" parent="handspace/hand" unique_id=1340172764]
+position = Vector2(-37, -224)
+texture = ExtResource("16_ro0ie")
+
+[node name="sleeve" type="Sprite2D" parent="handspace" unique_id=1267110461]
+position = Vector2(-44.854137, -340.20132)
+texture = ExtResource("17_103ce")

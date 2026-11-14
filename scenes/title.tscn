@@ -1,7 +1,43 @@
 [gd_scene format=3 uid="uid://bw7wke3675tff"]
 
+[ext_resource type="Script" uid="uid://d4e7hd2muschj" path="res://script/titleload.gd" id="1_b3w7a"]
+[ext_resource type="Texture2D" uid="uid://bgvj1xlajfcd3" path="res://texture/buttons/Quit_Button_Styled.png" id="1_pyl7j"]
+[ext_resource type="Texture2D" uid="uid://bk478b0lqsgt6" path="res://texture/buttons/Play_Button_Styled.png" id="1_wosw1"]
+[ext_resource type="Texture2D" uid="uid://d4auhg4o21rw2" path="res://texture/buttons/Quit_Button_Styled_Hover.png" id="2_b3w7a"]
+[ext_resource type="Texture2D" uid="uid://dxlnxmwh6mtwg" path="res://texture/buttons/Play_Button_Styled_Hover.png" id="2_p6dhs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font_size = 82
+
 [node name="Node2D" type="Node2D" unique_id=346651072]
+scale = Vector2(0.75, 0.75)
+metadata/_edit_vertical_guides_ = [-682.0]
+
+[node name="QuitBtn" type="TextureButton" parent="." unique_id=607770249]
+offset_left = 1217.3334
+offset_top = 116.0
+offset_right = 1620.3334
+offset_bottom = 531.0
+texture_normal = ExtResource("1_pyl7j")
+texture_pressed = ExtResource("1_pyl7j")
+texture_hover = ExtResource("2_b3w7a")
+texture_disabled = ExtResource("1_pyl7j")
+texture_focused = ExtResource("1_pyl7j")
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=978045746]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 403.0
+offset_bottom = 415.0
+texture_normal = ExtResource("1_wosw1")
+texture_pressed = ExtResource("1_wosw1")
+texture_hover = ExtResource("2_p6dhs")
+texture_disabled = ExtResource("1_wosw1")
+texture_focused = ExtResource("1_wosw1")
+script = ExtResource("1_b3w7a")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=636285943]
+
+[node name="Label" type="Label" parent="Node2D" unique_id=896257241]
+offset_right = 581.3334
+offset_bottom = 154.66667
+text = "Mr Hilbert's infinitely interesting hotel"
+label_settings = SubResource("LabelSettings_g4v7s")
