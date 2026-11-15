@@ -37,6 +37,14 @@ func _process(_delta: float) -> void:
 	var packed_rpn: PackedStringArray = PackedStringArray(rpn_queue)
 	set_meta("currentformula",packed_rpn)
 
+# Inside clear():
+func clear() -> void:
+	_current_number = ""
+	_infix_tokens.clear()
+	formula_string = ""
+	rpn_queue.clear()
+	set_meta("currentform", PackedStringArray())
+
 
 ## Handles the 1-12 integer ID from the "operand" metadata
 func _handle_meta_operand(op_id: int) -> void:
@@ -64,8 +72,9 @@ func _handle_meta_operand(op_id: int) -> void:
 			_add_function("sin")
 		11:
 			# Reserved for other functionality; ignored here
-			set_meta("complete",true)
-			print("complete")
+			_flush_number_buffer()
+			_update_outputs()
+			set_meta("complete", true)
 			pass
 
 
@@ -224,6 +233,8 @@ func _update_outputs() -> void:
 	formula_string = " ".join(all_tokens)
 	rpn_queue = _shunting_yard(all_tokens)
 	
+	# Convert Array[String] -> PackedStringArray and store in "currentform" meta
+	set_meta("currentform", PackedStringArray(rpn_queue))
 	print("Formula: %-25s | RPN: %s" % [formula_string, get_rpn_string()])
 
 
