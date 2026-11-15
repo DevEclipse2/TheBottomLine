@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyqxlrihso23a"
-path="res://.godot/imported/IMG_8818.PNG-861e6b6d4385db24f2a46e637a3d648e.ctex"
+uid="uid://dtibhlfs7lk1k"
+path="res://.godot/imported/palm_turned.PNG-23e11f0db8da5e605f7a4ab4025acc16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://texture/game/IMG_8818.PNG"
-dest_files=["res://.godot/imported/IMG_8818.PNG-861e6b6d4385db24f2a46e637a3d648e.ctex"]
+source_file="res://texture/game/palm_turned.PNG"
+dest_files=["res://.godot/imported/palm_turned.PNG-23e11f0db8da5e605f7a4ab4025acc16.ctex"]
 
 [params]
 
