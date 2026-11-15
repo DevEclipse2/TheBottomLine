@@ -11,12 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://btbmxqgehj06y" path="res://texture/game/bkg/Bkg-3.png" id="5_5dk4p"]
 [ext_resource type="Script" uid="uid://cupxp1nekex8n" path="res://script/universalitem.gd" id="7_103ce"]
 [ext_resource type="Texture2D" uid="uid://boq6bm7c7vdx2" path="res://texture/game/bkg/Bkg-4.png" id="7_bpk3j"]
-[ext_resource type="Texture2D" uid="uid://dthfi6wkvei1q" path="res://texture/game/notebook.png" id="7_ro0ie"]
 [ext_resource type="Texture2D" uid="uid://c4gw5q38blyt1" path="res://texture/game/Untitled_Artwork-10.png" id="8_liy57"]
 [ext_resource type="Texture2D" uid="uid://xo5lmx24tcto" path="res://texture/game/graphasset.png" id="8_rw4oa"]
 [ext_resource type="Texture2D" uid="uid://5untwbc2den8" path="res://texture/game/Untitled_Artwork-4.png" id="9_mwyo0"]
 [ext_resource type="Texture2D" uid="uid://bksof57muefiw" path="res://texture/game/Untitled_Artwork-8.png" id="10_6aqbo"]
 [ext_resource type="Texture2D" uid="uid://dpauac7qafls4" path="res://script/night_notes.png" id="11_hfwyp"]
+[ext_resource type="Texture2D" uid="uid://bfgyejgjsw4fl" path="res://texture/game/clip.png" id="12_ct2tn"]
 [ext_resource type="Texture2D" uid="uid://sisyrcmdmp8r" path="res://texture/game/point.PNG" id="12_mwyo0"]
 [ext_resource type="Script" uid="uid://dsdq01pshl8al" path="res://script/handfollowcursor.gd" id="12_s76x2"]
 [ext_resource type="Texture2D" uid="uid://dtibhlfs7lk1k" path="res://texture/game/palm_turned.PNG" id="13_s76x2"]
@@ -36,6 +36,7 @@
 [ext_resource type="Script" uid="uid://bavkwviuvgbw3" path="res://scenes/formula_constructor.gd" id="27_5dk4p"]
 [ext_resource type="Script" uid="uid://b5la6akc86evs" path="res://scenes/formulastore.gd" id="29_ct2tn"]
 [ext_resource type="FontFile" uid="uid://bpo01b52s47i2" path="res://texture/fonts/23857937022.ttf" id="29_ngbhp"]
+[ext_resource type="PackedScene" uid="uid://bp3gci8v5wt5l" path="res://scenes/night_notes.tscn" id="33_ct2tn"]
 [ext_resource type="Script" uid="uid://eb2qdmyn08cj" path="res://scenes/shift.gd" id="35_qlma2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yf5fn"]
@@ -260,9 +261,9 @@ metadata/id = 1
 position = Vector2(-836.42126, 198.74234)
 
 [node name="transcoder" type="Sprite2D" parent="feedback/workspace/main/widgets/list" unique_id=1714496105]
-position = Vector2(220.85896, 61.34973)
+position = Vector2(28.629791, -267.89362)
 scale = Vector2(1.39, 1.39)
-texture = ExtResource("11_hfwyp")
+texture = ExtResource("12_ct2tn")
 
 [node name="Btn" type="Button" parent="feedback/workspace/main/widgets/list/transcoder" unique_id=1252215913]
 z_index = -1
@@ -293,21 +294,21 @@ script = ExtResource("7_103ce")
 metadata/id = 5
 
 [node name="note" type="Node2D" parent="feedback/workspace/main/widgets" unique_id=750178945]
-position = Vector2(-406.97345, 178.29245)
+position = Vector2(-339.48877, 223.28223)
 
 [node name="notebook" type="Sprite2D" parent="feedback/workspace/main/widgets/note" unique_id=1578993805]
 z_index = 1
-position = Vector2(-30.674849, -231.08386)
-scale = Vector2(0.685, 0.685)
-texture = ExtResource("7_ro0ie")
+position = Vector2(179.9591, 36.80982)
+scale = Vector2(1.14, 1.14)
+texture = ExtResource("11_hfwyp")
 
 [node name="Btn" type="Button" parent="feedback/workspace/main/widgets/note/notebook" unique_id=172914773]
 z_index = -4
-offset_left = -122.6994
-offset_top = -220.85896
-offset_right = -114.6994
-offset_bottom = -212.85896
-scale = Vector2(53.161472, 69.703995)
+offset_left = -355.1824
+offset_top = -143.50803
+offset_right = -347.1824
+offset_bottom = -135.50803
+scale = Vector2(46.12966, 22.637533)
 script = ExtResource("7_103ce")
 metadata/id = 2
 
@@ -394,7 +395,6 @@ position = Vector2(111.72446, 82.31523)
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="grip" type="Sprite2D" parent="feedback/handspace/hand" unique_id=553318208]
-visible = false
 position = Vector2(-37, -224)
 texture = ExtResource("13_s76x2")
 
@@ -416,13 +416,12 @@ scale = Vector2(0.465, 0.465)
 texture = ExtResource("4_rvs2r")
 
 [node name="notebook" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=878174009]
-visible = false
 z_index = 1
-position = Vector2(88.94389, -59.64399)
+position = Vector2(62.903465, 114.949905)
 rotation = 1.2915436
-scale = Vector2(0.455, 0.455)
-skew = -0.17453292
-texture = ExtResource("7_ro0ie")
+scale = Vector2(0.785, 0.785)
+skew = 0.1675516
+texture = ExtResource("11_hfwyp")
 
 [node name="keys" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=171060695]
 visible = false
@@ -450,10 +449,10 @@ texture = ExtResource("8_liy57")
 
 [node name="transcoder" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=2129425896]
 visible = false
-position = Vector2(21.857372, 118.366905)
-rotation = 1.8267902
-scale = Vector2(0.61, 0.61)
-texture = ExtResource("11_hfwyp")
+position = Vector2(81.545975, -70.67912)
+rotation = 0.96650946
+scale = Vector2(1.155, 1.155)
+texture = ExtResource("12_ct2tn")
 
 [node name="graph" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=1682584964]
 visible = false
@@ -470,6 +469,7 @@ position = Vector2(-37, -224)
 texture = ExtResource("15_6aqbo")
 
 [node name="idle" type="Sprite2D" parent="feedback/handspace/hand" unique_id=1340172764]
+visible = false
 position = Vector2(-37, -224)
 texture = ExtResource("16_ro0ie")
 
@@ -662,6 +662,9 @@ text = "function here"
 label_settings = SubResource("LabelSettings_57qmd")
 
 [node name="notes" type="Node2D" parent="feedback/overlayContainer" unique_id=1239116162]
+
+[node name="Node2D" parent="feedback/overlayContainer/notes" unique_id=885295787 instance=ExtResource("33_ct2tn")]
+script = null
 
 [node name="graph" type="Node2D" parent="." unique_id=1295546014]
 visible = false
