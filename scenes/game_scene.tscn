@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://wkifpys3ey6r" path="res://texture/game/Untitled_Artwork-1.png" id="1_w5aja"]
 [ext_resource type="Texture2D" uid="uid://bakxgxoafe0b0" path="res://texture/game/Untitled_Artwork-2.png" id="2_mw25s"]
 [ext_resource type="Texture2D" uid="uid://e3055sxg6ojg" path="res://texture/game/Untitled_Artwork.png" id="3_85lt4"]
+[ext_resource type="PackedScene" uid="uid://caprml8cofdj8" path="res://scenes/guests.tscn" id="3_lm11r"]
 [ext_resource type="Texture2D" uid="uid://b43g2kp6i404v" path="res://texture/game/bkg/Bkg-2.png" id="4_gqftm"]
 [ext_resource type="Texture2D" uid="uid://edkj7xsrria2" path="res://texture/game/Untitled_Artwork-11.png" id="4_rvs2r"]
 [ext_resource type="Texture2D" uid="uid://btbmxqgehj06y" path="res://texture/game/bkg/Bkg-3.png" id="5_5dk4p"]
-[ext_resource type="Texture2D" uid="uid://c616fe1i3l4ts" path="res://texture/game/Untitled_Artwork-7.png" id="6_5ay1a"]
 [ext_resource type="Script" uid="uid://cupxp1nekex8n" path="res://script/universalitem.gd" id="7_103ce"]
 [ext_resource type="Texture2D" uid="uid://boq6bm7c7vdx2" path="res://texture/game/bkg/Bkg-4.png" id="7_bpk3j"]
 [ext_resource type="Texture2D" uid="uid://dthfi6wkvei1q" path="res://texture/game/notebook.png" id="7_ro0ie"]
@@ -16,12 +16,14 @@
 [ext_resource type="Texture2D" uid="uid://xo5lmx24tcto" path="res://texture/game/graphasset.png" id="8_rw4oa"]
 [ext_resource type="Texture2D" uid="uid://5untwbc2den8" path="res://texture/game/Untitled_Artwork-4.png" id="9_mwyo0"]
 [ext_resource type="Texture2D" uid="uid://bksof57muefiw" path="res://texture/game/Untitled_Artwork-8.png" id="10_6aqbo"]
+[ext_resource type="Texture2D" uid="uid://dpauac7qafls4" path="res://script/night_notes.png" id="11_hfwyp"]
 [ext_resource type="Texture2D" uid="uid://sisyrcmdmp8r" path="res://texture/game/point.PNG" id="12_mwyo0"]
 [ext_resource type="Texture2D" uid="uid://bfgyejgjsw4fl" path="res://texture/game/clip.png" id="12_ro0ie"]
 [ext_resource type="Script" uid="uid://dsdq01pshl8al" path="res://script/handfollowcursor.gd" id="12_s76x2"]
 [ext_resource type="Texture2D" uid="uid://dtibhlfs7lk1k" path="res://texture/game/IMG_8820.PNG" id="13_s76x2"]
 [ext_resource type="Texture2D" uid="uid://bhrlqjwhifnsn" path="res://texture/game/IMG_8819.PNG" id="14_77hjl"]
 [ext_resource type="Texture2D" uid="uid://dyqxlrihso23a" path="res://texture/game/IMG_8818.PNG" id="15_6aqbo"]
+[ext_resource type="Texture2D" uid="uid://1otpgujbf8uy" path="res://texture/game/Keys-1.png" id="15_ngbhp"]
 [ext_resource type="Texture2D" uid="uid://7ikbycw8mr8o" path="res://texture/game/IMG_8821.PNG" id="16_ro0ie"]
 [ext_resource type="Texture2D" uid="uid://vtqtuw3l3d22" path="res://texture/game/cuff.PNG" id="17_103ce"]
 [ext_resource type="Texture2D" uid="uid://y8obf4rjhw58" path="res://texture/game/Arrow.png" id="21_ro0ie"]
@@ -29,7 +31,12 @@
 [ext_resource type="Script" uid="uid://cjt5sp7oj62wx" path="res://script/overlaysequence.gd" id="25_6irsn"]
 [ext_resource type="Script" uid="uid://5bxaci2tpyt2" path="res://script/computeshader.gd" id="25_r47aq"]
 [ext_resource type="AudioStream" uid="uid://y2yp5vgtgqt5" path="res://texture/game/concierge_de_la_perpetuite.mp3" id="25_xgstd"]
+[ext_resource type="Script" uid="uid://bcinfkv1oxjxk" path="res://script/formulabuttons.gd" id="26_bpk3j"]
 [ext_resource type="Texture2D" uid="uid://b5ob66upgxnd6" path="res://texture/game/graph paper.png" id="26_ttvoq"]
+[ext_resource type="PackedScene" uid="uid://bx68l0h43tj7b" path="res://conversation.tscn" id="26_yhpmq"]
+[ext_resource type="Script" uid="uid://bavkwviuvgbw3" path="res://scenes/formula_constructor.gd" id="27_5dk4p"]
+[ext_resource type="FontFile" uid="uid://bpo01b52s47i2" path="res://texture/fonts/23857937022.ttf" id="29_ngbhp"]
+[ext_resource type="Script" uid="uid://eb2qdmyn08cj" path="res://scenes/shift.gd" id="35_qlma2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yf5fn"]
 font_size = 55
@@ -124,6 +131,16 @@ _data = {
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rw4oa"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_bpk3j"]
+font = ExtResource("29_ngbhp")
+font_size = 38
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_57qmd"]
+font = ExtResource("29_ngbhp")
+font_size = 40
+font_color = Color(0.12799647, 0.12799647, 0.12799644, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
 font_size = 55
 
@@ -169,6 +186,11 @@ libraries/ = SubResource("AnimationLibrary_rvs2r")
 
 [node name="main" type="Node2D" parent="feedback/workspace" unique_id=783284719]
 
+[node name="Guests" parent="feedback/workspace/main" unique_id=1705013473 instance=ExtResource("3_lm11r")]
+z_index = 1
+position = Vector2(-826.19635, -1541.544)
+scale = Vector2(1.545, 1.545)
+
 [node name="the object shadow" type="Sprite2D" parent="feedback/workspace/main" unique_id=588648489]
 z_index = 2
 position = Vector2(1944.7649, 147.61758)
@@ -178,7 +200,12 @@ offset = Vector2(0, -200)
 [node name="bkg" type="Sprite2D" parent="feedback/workspace/main" unique_id=1885183458]
 texture = ExtResource("4_gqftm")
 
+[node name="bkg2" type="Sprite2D" parent="feedback/workspace/main" unique_id=1206315966]
+z_index = 2
+texture = ExtResource("7_bpk3j")
+
 [node name="desk top" type="Sprite2D" parent="feedback/workspace/main" unique_id=459842786]
+z_index = 1
 texture = ExtResource("5_5dk4p")
 
 [node name="desk" type="Sprite2D" parent="feedback/workspace/main" unique_id=966231585]
@@ -229,12 +256,12 @@ script = ExtResource("7_103ce")
 metadata/id = 1
 
 [node name="list" type="Node2D" parent="feedback/workspace/main/widgets" unique_id=2010580712]
-position = Vector2(-815.97144, 149.66258)
+position = Vector2(-836.42126, 198.74234)
 
 [node name="transcoder" type="Sprite2D" parent="feedback/workspace/main/widgets/list" unique_id=1714496105]
-position = Vector2(26.58493, -316.9734)
+position = Vector2(220.85896, 61.34973)
 scale = Vector2(1.39, 1.39)
-texture = ExtResource("12_ro0ie")
+texture = ExtResource("11_hfwyp")
 
 [node name="Btn" type="Button" parent="feedback/workspace/main/widgets/list/transcoder" unique_id=1252215913]
 z_index = -1
@@ -300,11 +327,11 @@ script = ExtResource("7_103ce")
 metadata/id = 4
 
 [node name="keys" type="Node2D" parent="feedback/workspace/main/widgets" unique_id=115881963]
-position = Vector2(345.58282, -22.11657)
+position = Vector2(531.6769, 507.53577)
 
 [node name="keys" type="Sprite2D" parent="feedback/workspace/main/widgets/keys" unique_id=1326906341]
 position = Vector2(-345.58276, 22.116455)
-texture = ExtResource("6_5ay1a")
+texture = ExtResource("15_ngbhp")
 
 [node name="Btn" type="Button" parent="feedback/workspace/main/widgets/keys/keys" unique_id=1393638702]
 z_index = -1
@@ -396,11 +423,12 @@ texture = ExtResource("7_ro0ie")
 
 [node name="keys" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=171060695]
 visible = false
-position = Vector2(-69.81451, -46.587402)
+z_index = 1
+position = Vector2(-95.87451, -53.54117)
 rotation = 1.1780972
 scale = Vector2(0.52, 0.52)
 skew = -0.3996804
-texture = ExtResource("6_5ay1a")
+texture = ExtResource("15_ngbhp")
 
 [node name="bottle" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=2085584585]
 visible = false
@@ -451,27 +479,37 @@ skew = -0.05235988
 texture = ExtResource("17_103ce")
 
 [node name="overlayContainer" type="Node2D" parent="feedback" unique_id=1981744205]
+visible = false
 z_index = 1000
 script = ExtResource("25_6irsn")
+metadata/overlay = 0
 
-[node name="GraphPaper" type="Sprite2D" parent="feedback/overlayContainer" unique_id=495109325]
+[node name="conversation" type="Node2D" parent="feedback/overlayContainer" unique_id=841489920]
+
+[node name="Node2D" parent="feedback/overlayContainer/conversation" unique_id=949668509 instance=ExtResource("26_yhpmq")]
+
+[node name="graphs" type="Node2D" parent="feedback/overlayContainer" unique_id=1843053596]
+
+[node name="GraphPaper" type="Sprite2D" parent="feedback/overlayContainer/graphs" unique_id=495109325]
 z_index = 28
-position = Vector2(617, 433.00003)
+position = Vector2(787, 433.00003)
 scale = Vector2(0.955, 0.955)
 texture = ExtResource("26_ttvoq")
 
-[node name="Node" type="Node2D" parent="feedback/overlayContainer/GraphPaper" unique_id=1104250539]
-position = Vector2(-651.30896, -494.24088)
+[node name="Node" type="Node2D" parent="feedback/overlayContainer/graphs/GraphPaper" unique_id=1104250539]
+position = Vector2(-833.5079, -494.24088)
 
-[node name="add" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=980524470]
+[node name="add" type="Button" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=980524470]
 offset_left = 21.999939
 offset_top = 64.99997
 offset_right = 39.99994
 offset_bottom = 95.99997
 scale = Vector2(7.131793, 3.031104)
 text = "+"
+script = ExtResource("26_bpk3j")
+metadata/op = 1
 
-[node name="sub" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=490796818]
+[node name="sub" type="Button" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=490796818]
 offset_left = 20.0
 offset_top = 199.0
 offset_right = 38.0
@@ -479,8 +517,10 @@ offset_bottom = 230.0
 scale = Vector2(7.131793, 3.031104)
 text = "-
 "
+script = ExtResource("26_bpk3j")
+metadata/op = 2
 
-[node name="n" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=2005547694]
+[node name="n" type="Button" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=2005547694]
 offset_left = 161.25662
 offset_top = 68.06283
 offset_right = 180.25662
@@ -488,50 +528,127 @@ offset_bottom = 99.06283
 scale = Vector2(7.131793, 3.031104)
 text = "n
 "
+script = ExtResource("26_bpk3j")
+metadata/op = 3
 
-[node name="c" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=863400409]
-offset_left = 161.2566
-offset_top = 188.48169
-offset_right = 180.2566
-offset_bottom = 219.48169
+[node name="^" type="Button" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=863400409]
+offset_left = 161.25655
+offset_top = 188.48166
+offset_right = 180.25655
+offset_bottom = 219.48166
 scale = Vector2(7.131793, 3.031104)
-text = "c"
+text = "^"
+script = ExtResource("26_bpk3j")
+metadata/op = 4
 
-[node name="div" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=922350494]
+[node name="(" type="Button" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=1116777313]
+offset_left = 299.47644
+offset_top = 69.10995
+offset_right = 318.47644
+offset_bottom = 100.10995
+scale = Vector2(7.131793, 3.031104)
+text = "(
+"
+script = ExtResource("26_bpk3j")
+metadata/op = 5
+
+[node name=")" type="Button" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=284921277]
+offset_left = 299.47644
+offset_top = 189.52881
+offset_right = 318.47644
+offset_bottom = 220.52881
+scale = Vector2(7.131793, 3.031104)
+text = ")"
+script = ExtResource("26_bpk3j")
+metadata/op = 6
+
+[node name="div" type="Button" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=922350494]
 offset_left = 22.0
 offset_top = 464.0
 offset_right = 40.0
 offset_bottom = 495.0
 scale = Vector2(7.131793, 3.031104)
 text = "÷"
+script = ExtResource("26_bpk3j")
+metadata/op = 7
 
-[node name="mul" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=1932408008]
+[node name="mul" type="Button" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=1932408008]
 offset_left = 20.0
 offset_top = 340.0
 offset_right = 38.0
 offset_bottom = 371.0
 scale = Vector2(7.131793, 3.031104)
 text = "x"
+script = ExtResource("26_bpk3j")
+metadata/op = 8
 
-[node name="sine" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=1273668424]
-offset_left = 21.989594
-offset_top = 562.3037
-offset_right = 61.989594
-offset_bottom = 593.3037
+[node name="del" type="Button" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=1029713046]
+offset_left = 164.39792
+offset_top = 461.78012
+offset_right = 204.39792
+offset_bottom = 492.78012
+scale = Vector2(7.131793, 3.031104)
+text = "del"
+script = ExtResource("26_bpk3j")
+metadata/op = 9
+
+[node name="sine" type="Button" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=1273668424]
+offset_left = 159.16231
+offset_top = 336.1256
+offset_right = 199.16231
+offset_bottom = 367.1256
 scale = Vector2(7.131793, 3.031104)
 text = "sine"
+script = ExtResource("26_bpk3j")
+metadata/op = 10
 
-[node name="test" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=1445562929]
-offset_left = 21.989594
-offset_top = 839.7905
-offset_right = 61.989594
-offset_bottom = 870.7905
+[node name="confirm" type="Button" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=1323663758]
+offset_left = 15.706807
+offset_top = 831.41364
+offset_right = 55.706806
+offset_bottom = 862.41364
+scale = Vector2(7.131793, 3.031104)
+text = "confirm"
+script = ExtResource("26_bpk3j")
+metadata/op = 11
+
+[node name="test" type="Button" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=1445562929]
+offset_left = 20.942408
+offset_top = 720.4189
+offset_right = 60.942406
+offset_bottom = 751.4189
 scale = Vector2(7.131793, 3.031104)
 text = "test"
+script = ExtResource("26_bpk3j")
+metadata/op = 12
 
-[node name="graph" type="Sprite2D" parent="feedback/overlayContainer/GraphPaper" unique_id=1320360661]
+[node name="Node2D" type="Node2D" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=1300088238]
+position = Vector2(6.391116e-05, 0)
+
+[node name="controls" type="Label" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=1877510637]
+offset_left = 825.1309
+offset_top = 101.57068
+offset_right = 1223.1309
+offset_bottom = 188.57068
+text = "click and drag to pan"
+label_settings = SubResource("LabelSettings_bpk3j")
+
+[node name="graph" type="Sprite2D" parent="feedback/overlayContainer/graphs/GraphPaper" unique_id=1320360661]
 scale = Vector2(1.2, 1.2)
 script = ExtResource("25_r47aq")
+
+[node name="formula constructor" type="Node2D" parent="feedback/overlayContainer/graphs" unique_id=925819362]
+script = ExtResource("27_5dk4p")
+metadata/operand = 0
+
+[node name="formula disp" type="Label" parent="feedback/overlayContainer/graphs/formula constructor" unique_id=756178392]
+z_index = 32
+offset_left = 449.0
+offset_top = 656.0
+offset_right = 847.0
+offset_bottom = 740.0
+text = "function here"
+label_settings = SubResource("LabelSettings_57qmd")
 
 [node name="graph" type="Node2D" parent="." unique_id=1295546014]
 visible = false
@@ -626,3 +743,6 @@ texture = ExtResource("21_ro0ie")
 stream = ExtResource("25_xgstd")
 autoplay = true
 parameters/looping = true
+
+[node name="ShiftSystem" type="Node" parent="." unique_id=1201648641]
+script = ExtResource("35_qlma2")
