@@ -11,7 +11,7 @@ font_color = Color(1, 0.00999999, 0.00999999, 1)
 
 [node name="Node2D" type="Node2D" unique_id=949668509]
 script = ExtResource("1_u5ion")
-metadata/convoid = 1
+metadata/convoid = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1306262785]
 position = Vector2(566.5, 435.5)
