@@ -17,6 +17,7 @@ extends Node2D
 @onready var bottle : Sprite2D = $hand/grip/bottle
 @onready var clock : Sprite2D = $hand/grip/clock
 @onready var list : Sprite2D = $hand/grip/transcoder
+@onready var graph : Sprite2D = $hand/grip/graph
 
 
 
@@ -72,6 +73,7 @@ func SetItemHand():
 			bottle.visible = false
 			clock.visible = false
 			list.visible = false
+			graph.visible = false
 		1:
 			ashtray.visible = true
 			note.visible = false
@@ -79,6 +81,8 @@ func SetItemHand():
 			bottle.visible = false
 			clock.visible = false
 			list.visible = false
+			graph.visible = false
+			
 		2:
 			ashtray.visible = false
 			note.visible = true
@@ -86,6 +90,8 @@ func SetItemHand():
 			bottle.visible = false
 			clock.visible = false
 			list.visible = false
+			graph.visible = false
+			
 		3:
 			ashtray.visible = false
 			note.visible = false
@@ -93,6 +99,8 @@ func SetItemHand():
 			bottle.visible = false
 			clock.visible = false
 			list.visible = false
+			graph.visible = false
+			
 		4:
 			ashtray.visible = false
 			note.visible = false
@@ -100,6 +108,8 @@ func SetItemHand():
 			bottle.visible = true
 			clock.visible = false
 			list.visible = false
+			graph.visible = false
+			
 		5:
 			ashtray.visible = false
 			note.visible = false
@@ -107,6 +117,7 @@ func SetItemHand():
 			bottle.visible = false
 			clock.visible = true
 			list.visible = false
+			graph.visible = false
 		6: 
 			ashtray.visible = false
 			note.visible = false
@@ -114,6 +125,15 @@ func SetItemHand():
 			bottle.visible = false
 			clock.visible = false
 			list.visible = true
+			graph.visible = false
+		7: 
+			ashtray.visible = false
+			note.visible = false
+			keys.visible = false 
+			bottle.visible = false
+			clock.visible = false
+			list.visible = false
+			graph.visible = true
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

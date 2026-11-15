@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ba5llfg1ggl8i" path="res://texture/game/Untitled_Artwork-9.png" id="7_ldkr4"]
 [ext_resource type="Texture2D" uid="uid://dthfi6wkvei1q" path="res://texture/game/notebook.png" id="7_ro0ie"]
 [ext_resource type="Texture2D" uid="uid://c4gw5q38blyt1" path="res://texture/game/Untitled_Artwork-10.png" id="8_liy57"]
+[ext_resource type="Texture2D" uid="uid://xo5lmx24tcto" path="res://texture/game/graphasset.png" id="8_rw4oa"]
 [ext_resource type="Texture2D" uid="uid://5untwbc2den8" path="res://texture/game/Untitled_Artwork-4.png" id="9_mwyo0"]
 [ext_resource type="Texture2D" uid="uid://bksof57muefiw" path="res://texture/game/Untitled_Artwork-8.png" id="10_6aqbo"]
 [ext_resource type="Texture2D" uid="uid://sisyrcmdmp8r" path="res://texture/game/point.PNG" id="12_mwyo0"]
@@ -24,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://vtqtuw3l3d22" path="res://texture/game/cuff.PNG" id="17_103ce"]
 [ext_resource type="Texture2D" uid="uid://y8obf4rjhw58" path="res://texture/game/Arrow.png" id="21_ro0ie"]
 [ext_resource type="Script" uid="uid://cx5hjnsobl6o6" path="res://script/grapher.gd" id="22_pb36m"]
+[ext_resource type="AudioStream" uid="uid://y2yp5vgtgqt5" path="res://texture/game/concierge_de_la_perpetuite.mp3" id="25_xgstd"]
+[ext_resource type="Texture2D" uid="uid://b5ob66upgxnd6" path="res://texture/game/graph paper.png" id="26_ttvoq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yf5fn"]
 font_size = 55
@@ -131,6 +134,7 @@ script = ExtResource("1_77hjl")
 metadata/callid = 0
 metadata/object = 0
 metadata/handfull = false
+metadata/overlay = false
 
 [node name="hand full alert" type="Label" parent="feedback" unique_id=868917202]
 z_index = 10
@@ -182,6 +186,25 @@ texture = SubResource("PlaceholderTexture2D_rw4oa")
 
 [node name="calendar" type="Sprite2D" parent="feedback/workspace/main/widgets" unique_id=1434278125]
 texture = ExtResource("5_tqxxy")
+
+[node name="graph" type="Node2D" parent="feedback/workspace/main/widgets" unique_id=1632601375]
+position = Vector2(6.114502, 348.0266)
+
+[node name="graph" type="Sprite2D" parent="feedback/workspace/main/widgets/graph" unique_id=838948554]
+z_index = 1
+position = Vector2(-204.47864, -384.83636)
+texture = ExtResource("8_rw4oa")
+
+[node name="Btn" type="Button" parent="feedback/workspace/main/widgets/graph/graph" unique_id=374934297]
+z_index = -15
+offset_left = 42.94478
+offset_top = 77.70962
+offset_right = 50.94478
+offset_bottom = 85.70962
+rotation = 0.35805875
+scale = Vector2(50.733906, 54.167248)
+script = ExtResource("7_103ce")
+metadata/id = 7
 
 [node name="tray" type="Node2D" parent="feedback/workspace/main/widgets" unique_id=2113912033]
 position = Vector2(-840.5112, -408.61963)
@@ -397,21 +420,41 @@ rotation = 1.1466813
 scale = Vector2(1.195, 1.195)
 texture = ExtResource("12_ro0ie")
 
+[node name="graph" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=1682584964]
+visible = false
+z_index = 1
+position = Vector2(18.35205, -101.911255)
+rotation = 1.2952102
+scale = Vector2(0.53, 0.53)
+skew = -0.41887903
+texture = ExtResource("26_ttvoq")
+
 [node name="beckon" type="Sprite2D" parent="feedback/handspace/hand" unique_id=2040563930]
 visible = false
 position = Vector2(-37, -224)
 texture = ExtResource("15_6aqbo")
 
 [node name="idle" type="Sprite2D" parent="feedback/handspace/hand" unique_id=1340172764]
+visible = false
 position = Vector2(-37, -224)
 texture = ExtResource("16_ro0ie")
 
 [node name="sleeve" type="Sprite2D" parent="feedback/handspace" unique_id=1267110461]
+z_index = 256
 position = Vector2(-88.909, -386.526)
 rotation = -0.13150577
 scale = Vector2(1, 1.18)
 skew = -0.05235988
 texture = ExtResource("17_103ce")
+
+[node name="overlayContainer" type="Node2D" parent="feedback" unique_id=1981744205]
+visible = false
+
+[node name="GraphPaper" type="Sprite2D" parent="feedback/overlayContainer" unique_id=495109325]
+z_index = 28
+position = Vector2(563, 433)
+scale = Vector2(0.955, 0.955)
+texture = ExtResource("26_ttvoq")
 
 [node name="graph" type="Node2D" parent="." unique_id=1295546014]
 visible = false
@@ -501,3 +544,7 @@ position = Vector2(710, 52.000004)
 rotation = 1.5707963
 scale = Vector2(0.045, -0.105)
 texture = ExtResource("21_ro0ie")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1827796405]
+stream = ExtResource("25_xgstd")
+parameters/looping = true

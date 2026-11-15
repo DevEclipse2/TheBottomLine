@@ -12,6 +12,10 @@ extends Node2D
 @onready var notebtn : Button = $workspace/main/widgets/note/notebook/Btn
 @onready var ashitem : Node2D = $workspace/main/widgets/tray
 @onready var ashbtn : Button = $workspace/main/widgets/tray/ashtray/Btn
+@onready var graphitem : Node2D = $workspace/main/widgets/graph
+@onready var graphbtn : Button = $workspace/main/widgets/graph/graph/Btn
+@onready var overlay : Node2D = $overlayContainer
+
 
 #for drawer, use beckon state visually but keep as 3 internally
 @onready var drawer : Sprite2D = $workspace/main/drawer
@@ -30,6 +34,9 @@ extends Node2D
 @onready var CTR : Node2D = $workspace/main/counterTopRight
 
 
+var overlay_en = false
+
+
 var helditem : Node2D
 
 var pointfade = 0
@@ -38,6 +45,8 @@ var state = 0
 # 1 : beckon
 # 2 : grip 
 # 3 : point
+
+var helditemid = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -64,6 +73,7 @@ func projectPlacePoint():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#use match to hide and spawn shadow
+	objectNameDisp.visible =  !overlay
 	pointfade -= delta
 	#if anything is hovered AND not gripping anything
 	if bottlebtn.is_hovered():
@@ -80,6 +90,8 @@ func _process(delta: float) -> void:
 		objectNameDisp.text = "ashtray.\n it seems to be full"
 	elif notebtn.is_hovered():
 		objectNameDisp.text = "read the mucking fanual"
+	elif graphbtn.is_hovered():
+		objectNameDisp.text = "assign rooms with the infinite graph (TM)"
 	else:
 		objectNameDisp.text = "point at any object!"
 	if state == 2:
@@ -92,6 +104,7 @@ func _process(delta: float) -> void:
 			var id = get_meta("callid")
 			hand.set_meta("object", id)
 			set_meta("handfull",true)
+			helditemid = id
 			match id:
 				0: 
 					ashitem.visible = true
@@ -118,6 +131,9 @@ func _process(delta: float) -> void:
 				6: 
 					helditem = listitem
 					listitem.visible = false
+				7:
+					helditem = graphitem
+					graphitem.visible = false
 			#below is thing that disables the buttons from being pressed
 			bottlebtn.disabled = true
 			keybtn.disabled = true
@@ -125,6 +141,7 @@ func _process(delta: float) -> void:
 			clockbtn.disabled = true
 			notebtn.disabled = true
 			ashbtn.disabled = true
+			graphbtn.disabled = true
 			set_meta("callid",0)
 			shadow.global_position = Vector2(1000000,0)
 		
@@ -158,27 +175,30 @@ func _unhandled_input(event: InputEvent) -> void:
 		# remember to disable the button components and re-enable them later
 		if state == 2 || get_meta("handfull"):
 			#throws the item down if previously holding any
-			print("itemdown")
-			bottlebtn.disabled = false
-			keybtn.disabled = false
-			listbtn.disabled = false
-			clockbtn.disabled = false
-			notebtn.disabled = false
-			ashbtn.disabled = false
-			#unhides the desktop sprites
-			ashitem.visible = true
-			bottleitem.visible = true
-			keyitem.visible = true
-			listitem.visible = true
-			clockitem.visible = true
-			noteitem.visible = true
-			state = 0
-			hand.set_meta("state",0)
-			set_meta("handfull",false)
-			set_meta("callid",0)
-			helditem.global_position = projectedLocation
-			helditem = null
-			shadow.global_position = Vector2(1000000,0)
+			if(!overlay_en):
+				print("itemdown")
+				bottlebtn.disabled = false
+				keybtn.disabled = false
+				listbtn.disabled = false
+				clockbtn.disabled = false
+				notebtn.disabled = false
+				ashbtn.disabled = false
+				graphbtn.disabled = false
+				#unhides the desktop sprites
+				ashitem.visible = true
+				bottleitem.visible = true
+				keyitem.visible = true
+				listitem.visible = true
+				clockitem.visible = true
+				noteitem.visible = true
+				graphitem.visible = true
+				state = 0
+				hand.set_meta("state",0)
+				set_meta("handfull",false)
+				set_meta("callid",0)
+				helditem.global_position = projectedLocation
+				helditem = null
+				shadow.global_position = Vector2(1000000,0)
 		else:
 			handFull.text = ""
 			#beckon
@@ -187,6 +207,18 @@ func _unhandled_input(event: InputEvent) -> void:
 			pointfade = 0.64
 	elif event.is_action_pressed("use"):
 		#stuff
-		print("use")
+		print("rightclick")
+		match helditemid:
+			2:
+				print("note")
+			6:
+				print("list")
+			7:
+				print("graph")
+		if helditemid == 2 || helditemid == 6 || helditemid == 7:
+			overlay_en = true
+			overlay.visible = true
+			print("use")
+			set_meta("overlay",true)
 	get_viewport().set_input_as_handled()
 	pass
