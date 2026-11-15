@@ -1,6 +1,7 @@
 extends Sprite2D
 
-const IMG_SIZE: int = 512
+const IMG_SIZE: int = 128
+const PIXEL_SCALE: int = 4
 ## Metadata key holding Array[PackedStringArray] (or a single PackedStringArray)
 const META_KEY: String = "functions"
 
@@ -31,7 +32,7 @@ func _ready() -> void:
 	img_texture = ImageTexture.create_from_image(img)
 	texture = img_texture
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	
+	scale = Vector2(PIXEL_SCALE, PIXEL_SCALE)
 	# Initialize metadata with an empty array if not already present
 	if not has_meta(META_KEY):
 		set_meta(META_KEY, [])
@@ -163,7 +164,6 @@ func _evaluate_rpn(rpn: PackedStringArray, x_val: float) -> float:
 	var stack: Array[float] = []
 	
 	for token in rpn:
-		print(token)
 		if token.is_valid_float():
 			stack.append(token.to_float())
 		elif token == "x":

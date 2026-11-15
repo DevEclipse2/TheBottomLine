@@ -2,6 +2,7 @@ extends Node
 @onready var feedback : Node2D = $/root/GameScene/feedback
 
 @onready var graph : Node2D = $graphs
+@onready var note : Node2D = $notes
 @onready var list : Node2D = $conversation
 
 
@@ -12,13 +13,21 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	match feedback.get_meta("overlay"):
+	match feedback.get_meta("overlayid"):
+		2:
+			print("note on")
+			note.visible = true
+			list.visible = false
+			graph.visible = false
 		6: 
+			print("list on")
+			note.visible = false
 			list.visible = true
 			graph.visible = false
-			
 		7:
-			list.visible = true
+			print("graph on")
+			note.visible = false
+			list.visible = false
 			graph.visible = true
 	
 	

@@ -213,13 +213,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			match helditemid:
 				2:
 					print("note")
-					set_meta("overlay",2)
+					set_meta("overlayid",2)
 				6:
 					print("list")
-					set_meta("overlay",6)
+					set_meta("overlayid",6)
 				7:
 					print("graph")
-					set_meta("overlay",7)
+					set_meta("overlayid",7)
 			if helditemid == 2 || helditemid == 6 || helditemid == 7:
 				overlay_en = true
 				overlay.visible = true

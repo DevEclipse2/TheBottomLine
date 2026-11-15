@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://bksof57muefiw" path="res://texture/game/Untitled_Artwork-8.png" id="10_6aqbo"]
 [ext_resource type="Texture2D" uid="uid://dpauac7qafls4" path="res://script/night_notes.png" id="11_hfwyp"]
 [ext_resource type="Texture2D" uid="uid://sisyrcmdmp8r" path="res://texture/game/point.PNG" id="12_mwyo0"]
-[ext_resource type="Texture2D" uid="uid://bfgyejgjsw4fl" path="res://texture/game/clip.png" id="12_ro0ie"]
 [ext_resource type="Script" uid="uid://dsdq01pshl8al" path="res://script/handfollowcursor.gd" id="12_s76x2"]
 [ext_resource type="Texture2D" uid="uid://dtibhlfs7lk1k" path="res://texture/game/IMG_8820.PNG" id="13_s76x2"]
 [ext_resource type="Texture2D" uid="uid://bhrlqjwhifnsn" path="res://texture/game/IMG_8819.PNG" id="14_77hjl"]
@@ -156,6 +155,7 @@ metadata/callid = 0
 metadata/object = 0
 metadata/handfull = false
 metadata/overlay = false
+metadata/overlayid = 0
 
 [node name="hand full alert" type="Label" parent="feedback" unique_id=868917202]
 z_index = 10
@@ -410,6 +410,7 @@ position = Vector2(154.06079, -62.555817)
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="ashtray" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=429733299]
+visible = false
 position = Vector2(461.4394, 274.33347)
 scale = Vector2(0.465, 0.465)
 texture = ExtResource("4_rvs2r")
@@ -449,10 +450,10 @@ texture = ExtResource("8_liy57")
 
 [node name="transcoder" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=2129425896]
 visible = false
-position = Vector2(113.8884, -41.135223)
-rotation = 1.1466813
-scale = Vector2(1.195, 1.195)
-texture = ExtResource("12_ro0ie")
+position = Vector2(21.857372, 118.366905)
+rotation = 1.8267902
+scale = Vector2(0.61, 0.61)
+texture = ExtResource("11_hfwyp")
 
 [node name="graph" type="Sprite2D" parent="feedback/handspace/hand/grip" unique_id=1682584964]
 visible = false
@@ -481,7 +482,6 @@ skew = -0.05235988
 texture = ExtResource("17_103ce")
 
 [node name="overlayContainer" type="Node2D" parent="feedback" unique_id=1981744205]
-visible = false
 z_index = 1000
 script = ExtResource("25_6irsn")
 metadata/overlay = 0
@@ -493,6 +493,7 @@ visible = false
 metadata/convoid = 1
 
 [node name="graphs" type="Node2D" parent="feedback/overlayContainer" unique_id=1843053596]
+visible = false
 script = ExtResource("29_ct2tn")
 
 [node name="GraphPaper" type="Sprite2D" parent="feedback/overlayContainer/graphs" unique_id=495109325]
@@ -640,7 +641,7 @@ text = "click and drag to pan"
 label_settings = SubResource("LabelSettings_bpk3j")
 
 [node name="graph" type="Sprite2D" parent="feedback/overlayContainer/graphs/GraphPaper" unique_id=1320360661]
-scale = Vector2(1.2, 1.2)
+scale = Vector2(2.28, 2.28)
 script = ExtResource("25_r47aq")
 bg_color = Color(0.86654294, 0.8363927, 0.769193, 0)
 metadata/functions = PackedStringArray()
@@ -659,6 +660,8 @@ offset_right = 847.0
 offset_bottom = 740.0
 text = "function here"
 label_settings = SubResource("LabelSettings_57qmd")
+
+[node name="notes" type="Node2D" parent="feedback/overlayContainer" unique_id=1239116162]
 
 [node name="graph" type="Node2D" parent="." unique_id=1295546014]
 visible = false
