@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bx68l0h43tj7b"]
+
+[ext_resource type="Script" uid="uid://ca0gjvt0hu3s6" path="res://transcript.gd" id="1_u5ion"]
+[ext_resource type="Texture2D" uid="uid://d1bly6ap1ts6d" path="res://texture/game/lined_paper.jpg" id="2_xa8yg"]
+[ext_resource type="FontFile" uid="uid://bpo01b52s47i2" path="res://texture/fonts/23857937022.ttf" id="3_jdrsm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u5ion"]
+font = ExtResource("3_jdrsm")
+font_size = 32
+font_color = Color(1, 0.00999999, 0.00999999, 1)
+
+[node name="Node2D" type="Node2D" unique_id=949668509]
+script = ExtResource("1_u5ion")
+metadata/convoid = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1306262785]
+position = Vector2(566.5, 435.5)
+scale = Vector2(0.48463053, 0.28466797)
+texture = ExtResource("2_xa8yg")
+
+[node name="Transcript" type="Label" parent="." unique_id=791797105]
+custom_maximum_size = Vector2(690, -1)
+offset_left = 231.0
+offset_top = 168.0
+offset_right = 857.0
+offset_bottom = 727.0
+label_settings = SubResource("LabelSettings_u5ion")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/convoid = 0
