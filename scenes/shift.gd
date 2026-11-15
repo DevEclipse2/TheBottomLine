@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	if(timer > nextTrigTime):
 		timer = 0
 		nextTrigTime =  rng.randf_range(12.6, 12 - 2 * readidx)
-		guestspawn(order[readidx])
+		#guestspawn(order[readidx])
 		readidx += 1
 		
 	pass

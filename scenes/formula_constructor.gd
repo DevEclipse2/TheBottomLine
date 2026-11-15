@@ -34,6 +34,8 @@ func _process(_delta: float) -> void:
 		set_meta("operand", 0)
 		_handle_meta_operand(op_id)
 	disp.text = formula_string
+	var packed_rpn: PackedStringArray = PackedStringArray(rpn_queue)
+	set_meta("currentformula",packed_rpn)
 
 
 ## Handles the 1-12 integer ID from the "operand" metadata
@@ -60,8 +62,10 @@ func _handle_meta_operand(op_id: int) -> void:
 			_handle_backspace()
 		10: # sine
 			_add_function("sin")
-		11, 12:
+		11:
 			# Reserved for other functionality; ignored here
+			set_meta("complete",true)
+			print("complete")
 			pass
 
 

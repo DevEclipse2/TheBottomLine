@@ -11,4 +11,4 @@ func toggle_sprite(number : int, on_screen : bool):
 		target.visible = false
 
 func _process(_delta):
-	
+	pass

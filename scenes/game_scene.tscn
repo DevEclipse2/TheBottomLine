@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://b5ob66upgxnd6" path="res://texture/game/graph paper.png" id="26_ttvoq"]
 [ext_resource type="PackedScene" uid="uid://bx68l0h43tj7b" path="res://conversation.tscn" id="26_yhpmq"]
 [ext_resource type="Script" uid="uid://bavkwviuvgbw3" path="res://scenes/formula_constructor.gd" id="27_5dk4p"]
+[ext_resource type="Script" uid="uid://b5la6akc86evs" path="res://scenes/formulastore.gd" id="29_ct2tn"]
 [ext_resource type="FontFile" uid="uid://bpo01b52s47i2" path="res://texture/fonts/23857937022.ttf" id="29_ngbhp"]
 [ext_resource type="Script" uid="uid://eb2qdmyn08cj" path="res://scenes/shift.gd" id="35_qlma2"]
 
@@ -277,6 +278,7 @@ metadata/id = 6
 position = Vector2(-568.52765, -547.67896)
 
 [node name="clock" type="Sprite2D" parent="feedback/workspace/main/widgets/clock" unique_id=1248092996]
+z_index = 1
 position = Vector2(568.52765, 547.67896)
 texture = ExtResource("8_liy57")
 
@@ -485,10 +487,13 @@ script = ExtResource("25_6irsn")
 metadata/overlay = 0
 
 [node name="conversation" type="Node2D" parent="feedback/overlayContainer" unique_id=841489920]
+visible = false
 
 [node name="Node2D" parent="feedback/overlayContainer/conversation" unique_id=949668509 instance=ExtResource("26_yhpmq")]
+metadata/convoid = 1
 
 [node name="graphs" type="Node2D" parent="feedback/overlayContainer" unique_id=1843053596]
+script = ExtResource("29_ct2tn")
 
 [node name="GraphPaper" type="Sprite2D" parent="feedback/overlayContainer/graphs" unique_id=495109325]
 z_index = 28
@@ -613,6 +618,7 @@ script = ExtResource("26_bpk3j")
 metadata/op = 11
 
 [node name="test" type="Button" parent="feedback/overlayContainer/graphs/GraphPaper/Node" unique_id=1445562929]
+visible = false
 offset_left = 20.942408
 offset_top = 720.4189
 offset_right = 60.942406
@@ -636,10 +642,14 @@ label_settings = SubResource("LabelSettings_bpk3j")
 [node name="graph" type="Sprite2D" parent="feedback/overlayContainer/graphs/GraphPaper" unique_id=1320360661]
 scale = Vector2(1.2, 1.2)
 script = ExtResource("25_r47aq")
+bg_color = Color(0.86654294, 0.8363927, 0.769193, 0)
+metadata/functions = PackedStringArray()
 
 [node name="formula constructor" type="Node2D" parent="feedback/overlayContainer/graphs" unique_id=925819362]
 script = ExtResource("27_5dk4p")
 metadata/operand = 0
+metadata/currentform = PackedStringArray()
+metadata/complete = false
 
 [node name="formula disp" type="Label" parent="feedback/overlayContainer/graphs/formula constructor" unique_id=756178392]
 z_index = 32
