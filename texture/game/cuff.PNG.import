@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sisyrcmdmp8r"
-path="res://.godot/imported/IMG_8817.PNG-d5b9d8563ad4e6cb13e1b5b443f54a01.ctex"
+uid="uid://vtqtuw3l3d22"
+path="res://.godot/imported/cuff.PNG-f54a926f4d9922720233da40378d0bbc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://texture/game/IMG_8817.PNG"
-dest_files=["res://.godot/imported/IMG_8817.PNG-d5b9d8563ad4e6cb13e1b5b443f54a01.ctex"]
+source_file="res://texture/game/cuff.PNG"
+dest_files=["res://.godot/imported/cuff.PNG-f54a926f4d9922720233da40378d0bbc.ctex"]
 
 [params]
 
