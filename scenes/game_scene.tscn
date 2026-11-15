@@ -5,11 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://wkifpys3ey6r" path="res://texture/game/Untitled_Artwork-1.png" id="1_w5aja"]
 [ext_resource type="Texture2D" uid="uid://bakxgxoafe0b0" path="res://texture/game/Untitled_Artwork-2.png" id="2_mw25s"]
 [ext_resource type="Texture2D" uid="uid://e3055sxg6ojg" path="res://texture/game/Untitled_Artwork.png" id="3_85lt4"]
+[ext_resource type="Texture2D" uid="uid://b43g2kp6i404v" path="res://texture/game/bkg/Bkg-2.png" id="4_gqftm"]
 [ext_resource type="Texture2D" uid="uid://edkj7xsrria2" path="res://texture/game/Untitled_Artwork-11.png" id="4_rvs2r"]
-[ext_resource type="Texture2D" uid="uid://d2ghpao8ux50x" path="res://texture/game/Untitled_Artwork-6.png" id="5_tqxxy"]
+[ext_resource type="Texture2D" uid="uid://btbmxqgehj06y" path="res://texture/game/bkg/Bkg-3.png" id="5_5dk4p"]
 [ext_resource type="Texture2D" uid="uid://c616fe1i3l4ts" path="res://texture/game/Untitled_Artwork-7.png" id="6_5ay1a"]
 [ext_resource type="Script" uid="uid://cupxp1nekex8n" path="res://script/universalitem.gd" id="7_103ce"]
-[ext_resource type="Texture2D" uid="uid://ba5llfg1ggl8i" path="res://texture/game/Untitled_Artwork-9.png" id="7_ldkr4"]
+[ext_resource type="Texture2D" uid="uid://boq6bm7c7vdx2" path="res://texture/game/bkg/Bkg-4.png" id="7_bpk3j"]
 [ext_resource type="Texture2D" uid="uid://dthfi6wkvei1q" path="res://texture/game/notebook.png" id="7_ro0ie"]
 [ext_resource type="Texture2D" uid="uid://c4gw5q38blyt1" path="res://texture/game/Untitled_Artwork-10.png" id="8_liy57"]
 [ext_resource type="Texture2D" uid="uid://xo5lmx24tcto" path="res://texture/game/graphasset.png" id="8_rw4oa"]
@@ -25,6 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://vtqtuw3l3d22" path="res://texture/game/cuff.PNG" id="17_103ce"]
 [ext_resource type="Texture2D" uid="uid://y8obf4rjhw58" path="res://texture/game/Arrow.png" id="21_ro0ie"]
 [ext_resource type="Script" uid="uid://cx5hjnsobl6o6" path="res://script/grapher.gd" id="22_pb36m"]
+[ext_resource type="Script" uid="uid://cjt5sp7oj62wx" path="res://script/overlaysequence.gd" id="25_6irsn"]
+[ext_resource type="Script" uid="uid://5bxaci2tpyt2" path="res://script/computeshader.gd" id="25_r47aq"]
 [ext_resource type="AudioStream" uid="uid://y2yp5vgtgqt5" path="res://texture/game/concierge_de_la_perpetuite.mp3" id="25_xgstd"]
 [ext_resource type="Texture2D" uid="uid://b5ob66upgxnd6" path="res://texture/game/graph paper.png" id="26_ttvoq"]
 
@@ -173,10 +176,10 @@ texture = ExtResource("3_85lt4")
 offset = Vector2(0, -200)
 
 [node name="bkg" type="Sprite2D" parent="feedback/workspace/main" unique_id=1885183458]
-texture = ExtResource("1_w5aja")
+texture = ExtResource("4_gqftm")
 
 [node name="desk top" type="Sprite2D" parent="feedback/workspace/main" unique_id=459842786]
-texture = ExtResource("7_ldkr4")
+texture = ExtResource("5_5dk4p")
 
 [node name="desk" type="Sprite2D" parent="feedback/workspace/main" unique_id=966231585]
 texture = ExtResource("2_mw25s")
@@ -185,7 +188,8 @@ texture = ExtResource("2_mw25s")
 texture = SubResource("PlaceholderTexture2D_rw4oa")
 
 [node name="calendar" type="Sprite2D" parent="feedback/workspace/main/widgets" unique_id=1434278125]
-texture = ExtResource("5_tqxxy")
+position = Vector2(134.94885, 0.37831813)
+texture = ExtResource("7_bpk3j")
 
 [node name="graph" type="Node2D" parent="feedback/workspace/main/widgets" unique_id=1632601375]
 position = Vector2(6.114502, 348.0266)
@@ -435,7 +439,6 @@ position = Vector2(-37, -224)
 texture = ExtResource("15_6aqbo")
 
 [node name="idle" type="Sprite2D" parent="feedback/handspace/hand" unique_id=1340172764]
-visible = false
 position = Vector2(-37, -224)
 texture = ExtResource("16_ro0ie")
 
@@ -448,13 +451,87 @@ skew = -0.05235988
 texture = ExtResource("17_103ce")
 
 [node name="overlayContainer" type="Node2D" parent="feedback" unique_id=1981744205]
-visible = false
+z_index = 1000
+script = ExtResource("25_6irsn")
 
 [node name="GraphPaper" type="Sprite2D" parent="feedback/overlayContainer" unique_id=495109325]
 z_index = 28
-position = Vector2(563, 433)
+position = Vector2(617, 433.00003)
 scale = Vector2(0.955, 0.955)
 texture = ExtResource("26_ttvoq")
+
+[node name="Node" type="Node2D" parent="feedback/overlayContainer/GraphPaper" unique_id=1104250539]
+position = Vector2(-651.30896, -494.24088)
+
+[node name="add" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=980524470]
+offset_left = 21.999939
+offset_top = 64.99997
+offset_right = 39.99994
+offset_bottom = 95.99997
+scale = Vector2(7.131793, 3.031104)
+text = "+"
+
+[node name="sub" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=490796818]
+offset_left = 20.0
+offset_top = 199.0
+offset_right = 38.0
+offset_bottom = 230.0
+scale = Vector2(7.131793, 3.031104)
+text = "-
+"
+
+[node name="n" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=2005547694]
+offset_left = 161.25662
+offset_top = 68.06283
+offset_right = 180.25662
+offset_bottom = 99.06283
+scale = Vector2(7.131793, 3.031104)
+text = "n
+"
+
+[node name="c" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=863400409]
+offset_left = 161.2566
+offset_top = 188.48169
+offset_right = 180.2566
+offset_bottom = 219.48169
+scale = Vector2(7.131793, 3.031104)
+text = "c"
+
+[node name="div" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=922350494]
+offset_left = 22.0
+offset_top = 464.0
+offset_right = 40.0
+offset_bottom = 495.0
+scale = Vector2(7.131793, 3.031104)
+text = "÷"
+
+[node name="mul" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=1932408008]
+offset_left = 20.0
+offset_top = 340.0
+offset_right = 38.0
+offset_bottom = 371.0
+scale = Vector2(7.131793, 3.031104)
+text = "x"
+
+[node name="sine" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=1273668424]
+offset_left = 21.989594
+offset_top = 562.3037
+offset_right = 61.989594
+offset_bottom = 593.3037
+scale = Vector2(7.131793, 3.031104)
+text = "sine"
+
+[node name="test" type="Button" parent="feedback/overlayContainer/GraphPaper/Node" unique_id=1445562929]
+offset_left = 21.989594
+offset_top = 839.7905
+offset_right = 61.989594
+offset_bottom = 870.7905
+scale = Vector2(7.131793, 3.031104)
+text = "test"
+
+[node name="graph" type="Sprite2D" parent="feedback/overlayContainer/GraphPaper" unique_id=1320360661]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("25_r47aq")
 
 [node name="graph" type="Node2D" parent="." unique_id=1295546014]
 visible = false
@@ -547,4 +624,5 @@ texture = ExtResource("21_ro0ie")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1827796405]
 stream = ExtResource("25_xgstd")
+autoplay = true
 parameters/looping = true

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bk478b0lqsgt6" path="res://texture/buttons/Play_Button_Styled.png" id="1_wosw1"]
 [ext_resource type="Texture2D" uid="uid://d4auhg4o21rw2" path="res://texture/buttons/Quit_Button_Styled_Hover.png" id="2_b3w7a"]
 [ext_resource type="Texture2D" uid="uid://dxlnxmwh6mtwg" path="res://texture/buttons/Play_Button_Styled_Hover.png" id="2_p6dhs"]
+[ext_resource type="VideoStream" uid="uid://6fh600qmuq6j" path="res://script/0001-0049.ogv" id="6_4rr2b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
 font_size = 82
@@ -35,6 +36,18 @@ texture_focused = ExtResource("1_wosw1")
 script = ExtResource("1_b3w7a")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=636285943]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Node2D" unique_id=1662289610]
+z_index = -5
+offset_left = 6.6666565
+offset_top = -2.6666489
+offset_right = 1158.6666
+offset_bottom = 897.3334
+scale = Vector2(1.3393675, 1.317479)
+mouse_filter = 2
+stream = ExtResource("6_4rr2b")
+autoplay = true
+loop = true
 
 [node name="Label" type="Label" parent="Node2D" unique_id=896257241]
 offset_right = 581.3334

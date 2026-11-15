@@ -199,6 +199,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				helditem.global_position = projectedLocation
 				helditem = null
 				shadow.global_position = Vector2(1000000,0)
+				helditemid = 0
 		else:
 			handFull.text = ""
 			#beckon
@@ -208,17 +209,23 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("use"):
 		#stuff
 		print("rightclick")
-		match helditemid:
-			2:
-				print("note")
-			6:
-				print("list")
-			7:
-				print("graph")
-		if helditemid == 2 || helditemid == 6 || helditemid == 7:
-			overlay_en = true
-			overlay.visible = true
-			print("use")
-			set_meta("overlay",true)
+		if !overlay_en:
+			match helditemid:
+				2:
+					print("note")
+				6:
+					print("list")
+				7:
+					print("graph")
+			if helditemid == 2 || helditemid == 6 || helditemid == 7:
+				overlay_en = true
+				overlay.visible = true
+				print("use")
+				set_meta("overlay",true)
+		else:
+			overlay_en = false
+			overlay.visible = false
+			print("off overlay")
+			set_meta("overlay",false)
 	get_viewport().set_input_as_handled()
 	pass
