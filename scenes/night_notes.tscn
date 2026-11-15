@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bp3gci8v5wt5l"]
+
+[ext_resource type="Script" path="res://night_notes.gd" id="1_f2ka8"]
+[ext_resource type="Texture2D" path="res://texture/game/post_it_bg.png" id="2_g11bm"]
+
+[node name="Node2D" type="Node2D" unique_id=885295787]
+script = ExtResource("1_f2ka8")
+metadata/day = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=594371766]
+position = Vector2(602.99994, 410.00003)
+scale = Vector2(0.81, 0.6556292)
+texture = ExtResource("2_g11bm")
+
+[node name="NightNotes" type="Label" parent="." unique_id=962408102]
+offset_left = 293.0
+offset_top = 198.0
+offset_right = 916.0
+offset_bottom = 654.0
+text = "werhy"
