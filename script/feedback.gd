@@ -73,7 +73,7 @@ func projectPlacePoint():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#use match to hide and spawn shadow
-	objectNameDisp.visible =  !overlay
+	objectNameDisp.visible =  !overlay_en
 	pointfade -= delta
 	#if anything is hovered AND not gripping anything
 	if bottlebtn.is_hovered():
